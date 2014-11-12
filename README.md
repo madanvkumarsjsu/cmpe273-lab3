@@ -1,4 +1,5 @@
-cmpe273-lab6
+cmpe273-lab3
 ============
 
-CMPE 273 Lab 6 Baseline
+CMPE 273 Lab 3 changes to client 
+Implemented md5 hashing
