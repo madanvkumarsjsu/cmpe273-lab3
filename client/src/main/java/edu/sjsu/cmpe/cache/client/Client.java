@@ -43,12 +43,14 @@ public class Client {
 			cachetry = consistentHash.get(i);
 			cachetry.put(i, val);
 		}
-		System.out.println("Fetching cached values");
+		System.out.println("Fetching cached values using keys");
 		for(int j=1; j<=10;j++){
 			cachetry = consistentHash.get(j);
 			System.out.println(j+" => "+cachetry.get(j));
 		}
-		//printCache();
+		System.out.println("Fetching all key values from server:");
+		for(CacheServiceInterface cs : servers)
+			System.out.println(cs.getAll());
 
 		System.out.println("Existing Cache Client...");
 	}

@@ -1,5 +1,7 @@
 package edu.sjsu.cmpe.cache.client;
 
+import org.json.JSONArray;
+
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
@@ -55,4 +57,19 @@ public class DistributedCacheService implements CacheServiceInterface {
             System.out.println("Failed to add to the cache.");
         }
     }
+
+	@Override
+	public JSONArray getAll() {
+		
+		HttpResponse<JsonNode> response = null;
+        try {
+            response = Unirest.get(this.cacheServerUrl + "/cache")
+                    .header("accept", "application/json").asJson();
+        } catch (UnirestException e) {
+            System.err.println(e);
+        }
+        JSONArray arrCacheValue = response.getBody().getArray();
+
+        return arrCacheValue;
+	}
 }
